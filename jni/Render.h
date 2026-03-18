@@ -198,47 +198,9 @@ void Render()
     //ShowWindow
 	if (showMenu) DrawMenu();
 
-    if (bFullChecked) NewDrawESP(ImGui::GetBackgroundDrawList(), screenWidth, screenHeight);
-	
-	if (selectedFeatures == 2){
-		//Tools::Hook((void *) ShowSelfPlayer_TryUseSkill2, (reinterpret_cast<void *>(TryUseSkill2)), (void **) &orig_TryUseSkill2);
-    	//Tools::Hook((void *) ShowSelfPlayer_TryUseSkill, (reinterpret_cast<void *>(TryUseSkill)), (void **) &oTryUseSkill);
-		//Tools::Hook((void *) ShowSelfPlayer_OnUpdate, (void *) iShowSelfPlayer_OnUpdate, (void **) &oShowSelfPlayer_OnUpdate);
-		//Tools::Hook((void *) ShowUnitAIComp_TryUseSkill, (void *) New_TryUseSkill, (void **) &New_OrigTryUseSkill);
-	}
-	
     //YaserAntiCrack1();
 	
-    if (!AttachIconDone) {
-        AttachIcon();
-        AttachIconDone = true;
-    }
-    
-    if (!AttachSpellDone) {
-        AttachSpell();
-        AttachSpellDone = true;
-    }
-
-    if (!AttachRankDone) {
-        AttachRank();
-        AttachRankDone = true;
-    }
-	
-	if (!AttachMonsterDone) {
-        AttachMonster();   
-        AttachMonsterDone = true;
-    }
      
-    if (!AttachMonsterAlertDone) {
-        AttachMonsterAlert();   
-        AttachMonsterAlertDone = true;
-    }
-    
-    if (!AttachCountryDone) {
-        AttachCountry();   
-        AttachCountryDone = true;
-    }
-
     ImGui::EndFrame();
     ImGui::Render();
     glViewport(0, 0, (int)io->DisplaySize.x, (int)io->DisplaySize.y);
