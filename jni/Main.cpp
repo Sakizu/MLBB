@@ -72,15 +72,7 @@
 #include "Config/setup.h"
 #include "Config/JNIStuff.h"
 #include "Config/TouchSystem.h"
-#include "XYZ/IconMinimap/DrawIcon.h"
-#include "Tools/Login/Login.h"
 #include "XYZ/GameClass.h"
-#include "XYZ/ToString.h"
-#include "XYZ/SDK.h"
-#include "XYZ/DrawMinimap.h"
-#include "XYZ/Minimap.h"
-#include "XYZ/DrawESP.h"
-#include "XYZ/Bypass.h"
 #include "DrawMenu.h"
 
 #undef stderr
@@ -258,17 +250,7 @@ void *main_thread(void *) {
 	
 	DobbyInstrument(dlsym(RTLD_NEXT, "eglSwapBuffers"), eglSwapBuffers_handler);
 	
-	Tools::Hook((void *) AntiCheatReporter_StartBattle, (void *) iAntiCheatReporter_StartBattle, (void **) &oAntiCheatReporter_StartBattle);
-    Tools::Hook((void *) AntiCheatReporter_EndBattle, (void *) iAntiCheatReporter_StartBattle, (void **) &oAntiCheatReporter_StartBattle);
-    Tools::Hook((void *) AntiCheatReporter_OnReleaseUseSkill, (void *) iAntiCheatReporter_OnReleaseUseSkill, (void **) &oAntiCheatReporter_OnReleaseUseSkill);
-    Tools::Hook((void *) AntiCheatReporter_OnTryUseSkill, (void *) iAntiCheatReporter_OnTryUseSkill, (void **) &oAntiCheatReporter_OnTryUseSkill);
-    Tools::Hook((void *) AntiCheatReporter_OnTryUseSkill2, (void *) iAntiCheatReporter_OnTryUseSkill2, (void **) &oAntiCheatReporter_OnTryUseSkill2);
-    Tools::Hook((void *) AntiCheatReporter_OnRequestSkillMsg, (void *) iAntiCheatReporter_OnRequestSkillMsg, (void **) &oAntiCheatReporter_OnRequestSkillMsg);
-    Tools::Hook((void *) AntiCheatReporter_HasSkillInfo, (void *) iAntiCheatReporter_HasSkillInfo, (void **) &oAntiCheatReporter_HasSkillInfo);
-    
-	Tools::Hook((void *) ShowBattleControl_SetAntiCheatReport, (void *) iSetAntiCheatReport, (void **) &oSetAntiCheatReport);
-	
-    pthread_t t;
+	// GUI-only build: no gameplay hooks are installed.
     return 0;
 }
 
